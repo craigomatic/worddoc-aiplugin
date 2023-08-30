@@ -56,7 +56,9 @@ public class PluginEndpoint
 
         _logger.LogInformation("Content was appended to blob");
 
-        var r = req.CreateResponse(HttpStatusCode.Created);            
+        var r = req.CreateResponse(HttpStatusCode.Created);
+        r.Headers.Add("Content-Type", "text/plain");
+        r.WriteString("Content was appended to blob");
         return r;
     }
 }
