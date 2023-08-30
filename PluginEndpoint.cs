@@ -27,8 +27,8 @@ public class PluginEndpoint
         return r;
     }
 
-    [OpenApiOperation(operationId: "AppendToDocument", tags: new[] { "AppendToDocumentFunction" }, Description = "Appends the given text to an existing document or creates a new document if one matching the desired filename does not exist.")]
-    [OpenApiRequestBody(contentType: "application/json", bodyType: typeof(AppendToDocRequest), Description = "JSON describing the content to append.", Required = true)]
+    [OpenApiOperation(operationId: "AppendToDocument", tags: new[] { "AppendToDocumentFunction" }, Description = "Appends the given text to an Azure Block Blob.")]
+    [OpenApiRequestBody(contentType: "application/json", bodyType: typeof(AppendToDocRequest), Description = "JSON describing the content to append and the WriteableBlobUri.", Required = true)]
     [OpenApiResponseWithBody(statusCode: HttpStatusCode.Created, contentType: "text/plain", bodyType: typeof(string), Description = "Confirms that the content was written.")]
     [OpenApiResponseWithBody(statusCode: HttpStatusCode.BadRequest, contentType: "application/json", bodyType: typeof(string), Description = "Returns the error of the input.")]
     [Function("AppendToDocument")]
