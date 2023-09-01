@@ -27,12 +27,12 @@ public class PluginEndpoint
         return r;
     }
 
-    [OpenApiOperation(operationId: "AppendToDocument", tags: new[] { "AppendToDocumentFunction" }, Description = "Appends the given text to an Azure Block Blob.")]
-    [OpenApiRequestBody(contentType: "application/json", bodyType: typeof(AppendToDocRequest), Description = "JSON describing the content to append and the WriteableBlobUri.", Required = true)]
+    [OpenApiOperation(operationId: "AppendToWordDocument", tags: new[] { "AppendToWordDocumentFunction" }, Description = "Appends the given text to a Word Document stored on an Azure Block Blob.")]
+    [OpenApiRequestBody(contentType: "application/json", bodyType: typeof(AppendToDocRequest), Description = "JSON describing the content to append and the URI to a writeable Azure Block Blob.", Required = true)]
     [OpenApiResponseWithBody(statusCode: HttpStatusCode.Created, contentType: "text/plain", bodyType: typeof(string), Description = "Confirms that the content was written.")]
     [OpenApiResponseWithBody(statusCode: HttpStatusCode.BadRequest, contentType: "application/json", bodyType: typeof(string), Description = "Returns the error of the input.")]
-    [Function("AppendToDocument")]
-    public async Task<HttpResponseData> AppendToDocument([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "doc")] HttpRequestData req)
+    [Function("AppendToWordDocument")]
+    public async Task<HttpResponseData> AppendToWordDocument([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "doc")] HttpRequestData req)
     {
         _logger.LogInformation("Beginning to append content to blob");
 
